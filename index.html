@@ -1,23 +1,292 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>שלום צבי</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>בית המקדש השני – הצהרת כורש</title>
   <style>
-    body {
-      min-height: 100vh;
+    :root {
+      --bg: #f6f1e7;
+      --card-bg: #fffdf9;
+      --ink: #2c241b;
+      --muted: #6b5b4b;
+      --accent: #b07d3b;
+      --accent-dark: #875a22;
+      --accent-soft: #f3e6d0;
+      --border: #e4d7c3;
+      --shadow: 0 10px 28px rgba(62, 42, 18, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Heebo", "Assistant", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, #efe4d0 0%, transparent 45%),
+        radial-gradient(circle at bottom left, #ede0c9 0%, transparent 45%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 28px 16px 48px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 36px 24px 32px;
+      background: linear-gradient(135deg, #3b2d1f 0%, #5b432c 100%);
+      color: #fffaf0;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255, 232, 185, 0.22);
+      border-radius: 22px;
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 224, 166, 0.18);
+      border: 1px solid rgba(255, 224, 166, 0.4);
+      color: #f8dfb0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    header h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.12rem;
+      color: #efe2cc;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* Hero Image Card */
+    .image-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .image-card img {
+      width: 100%;
+      max-height: 440px;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .image-caption {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-top: 12px;
+      padding: 0 8px;
+    }
+
+    .image-caption strong {
+      color: var(--ink);
+    }
+
+    /* 5 W's Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 20px;
+      box-shadow: 0 6px 18px rgba(62, 42, 18, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
       display: grid;
       place-items: center;
-      background: #f5f3ff;
-      color: #312e81;
-      font-family: system-ui, sans-serif;
+      font-size: 1.25rem;
+      flex-shrink: 0;
     }
-    h1 { font-size: clamp(2.5rem, 10vw, 6rem); }
+
+    .card h2 {
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .card p {
+      font-size: 1.02rem;
+      color: var(--ink);
+    }
+
+    /* Summary Box */
+    .summary {
+      background: linear-gradient(135deg, #fff8eb 0%, #f7ebd4 100%);
+      border: 2px solid #dec192;
+      border-radius: 20px;
+      padding: 24px 26px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .summary-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .summary h2 {
+      font-size: 1.25rem;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+    }
+
+    .summary p {
+      font-size: 1.08rem;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 28px 18px;
+      }
+      .summary {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
   </style>
 </head>
 <body>
-  <main><h1>שלום צבי</h1></main>
+  <main class="container">
+    <header>
+      <div class="badge">538 לפנה״ס • גלות בבל ← ירושלים</div>
+      <h1>בית המקדש השני אחרי הצהרת כורש</h1>
+      <p>הדגם שלי מציג את בית המקדש השני אחרי הצהרת כורש</p>
+    </header>
+
+    <section class="image-card">
+      <img src="cyrus_cylinder.jpeg" alt="גליל כורש – הצהרת כורש הגדול (539 לפנה״ס)" />
+      <p class="image-caption">
+        <strong>גליל כורש (539 לפנה״ס):</strong> כתובת חרס עתיקה בכתב יתדות המתעדת את הצהרת כורש הגדול ואת מדיניותו לאפשר לעמים לשוב לארצם ולבנות את מקדשיהם.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="שאלות מרכזיות">
+      <article class="card">
+        <div class="card-header">
+          <div class="icon">👑</div>
+          <h2>מי?</h2>
+        </div>
+        <p>כורש, מלך פרס, והעם היהודי שגלה לבבל.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <div class="icon">📜</div>
+          <h2>מה?</h2>
+        </div>
+        <p>כורש פרסם הצהרה שאפשרה ליהודים לשוב לארצם ולבנות מחדש את בית המקדש בירושלים.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <div class="icon">⏳</div>
+          <h2>מתי?</h2>
+        </div>
+        <p>בשנת 538 לפני הספירה, לאחר כיבוש בבל בידי כורש.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <div class="icon">📍</div>
+          <h2>מקום?</h2>
+        </div>
+        <p>ההצהרה ניתנה במסגרת שלטונו של כורש בבבל, ואפשרה ליהודים לשוב לירושלים.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <div class="icon">💡</div>
+          <h2>מדוע?</h2>
+        </div>
+        <p>כורש רצה לחזק את שלטונו באמצעות מתן חופש דתי לעמים שכבש, ולאפשר להם לשקם את מקדשיהם.</p>
+      </article>
+    </section>
+
+    <section class="summary">
+      <div class="summary-icon">🏛️</div>
+      <div>
+        <h2>לסיכום</h2>
+        <p>הצהרת כורש אפשרה ליהודים לחזור לארץ ישראל מגלות בבל ולהתחיל בבניית בית המקדש השני.</p>
+      </div>
+    </section>
+
+    <footer>
+      עבודה בהיסטוריה • הדגם שלי: בית המקדש השני
+    </footer>
+  </main>
 </body>
 </html>
